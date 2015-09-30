@@ -2,7 +2,7 @@ Meteor.subscribe("says");
 
 Template.body.helpers({
   last: function () {
-    if( Session.get("secret", false) ) {
+    if( Session.get("secret") ) {
       return Says.find({}, {fields: {text: 1}, sort: {created_at: -1}, limit: 10})
              .fetch()
              .reverse();
@@ -16,10 +16,17 @@ Template.body.events({
   "submit .shout": function (event) {
     event.preventDefault();
     var text = event.target.text.value;
-    if( /^.{3,30}$/.test(text) ) {
+    if( ! /^.{3,30}$/.test(text) ) return;
+    if( text === "konami code" ) {
+      if( Session.get("secret") )
+        Session.set("secret", false);
+      else
+        Session.set("secret", true);
+    } else {
       Meteor.call("addSay", text);
     }
     event.target.text.value = "";
+    event.target.text.blur();
   }
 });
 

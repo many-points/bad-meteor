@@ -11,3 +11,10 @@ Meteor.methods({
     });
   }
 });
+
+Meteor.startup(function () {
+  if (Says.find().count() === 0) {
+    Says._ensureIndex( { random_point: '2d' } );
+    Meteor.call("addSay", "It feels good");
+  }
+});
