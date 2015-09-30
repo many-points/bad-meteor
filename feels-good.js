@@ -34,7 +34,7 @@ if (Meteor.isClient) {
   });
 
   getSay = function () {
-    result = Says.findOne( { random_point : { $near : [Math.random(), 0] } } );
+    result = Says.findOne( { random_point : { $near : [Math.random(), Math.random()] } } );
     if ( result == null ) return "I AM ERROR";
     return result.text;
   };
