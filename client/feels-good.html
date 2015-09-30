@@ -1,18 +1,29 @@
 <head>
-  <title>feels good</title>
+  <title>It feels good</title>
   <link href="http://webfonts.ru/import/flow.css" rel="stylesheet">
 </head>
 
 <body>
+  <div class="secret" hidden>
+    <ul>
+      {{#each last}}
+        {{> say}}
+      {{/each}}
+    </ul>
+  </div>
   <p></p>
-  <div>
+  <!--<div>-->
     <form class="shout">
       <input type="text" name="text" placeholder="" />
     </form>
-  </div>
+  <!--</div>-->
   {{> audio}}
 </body>
 
 <template name="audio">
   <audio src="feels-good.mp3" loop></audio>
+</template>
+
+<template name="say">
+  <li>{{text}}</li>
 </template>

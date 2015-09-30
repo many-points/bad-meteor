@@ -1,5 +1,9 @@
 /* CSS declarations go here */
 body {
+  font-family: 'Flow';
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+  font-weight: bold;
+  color: #FFFFFF;
   background-color: black;
   min-height: 100%;
   min-width: 100%;
@@ -12,9 +16,7 @@ body {
 }
 
 p {
-  font: 5em 'Flow'; font-weight: bold;
-  color: #FFFFFF;
-  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+  font-size: 5em;
   width: 100%;
   text-align: center;
   position: relative;
@@ -27,14 +29,30 @@ p {
 }
 
 .shout input {
-  font: 2em 'Flow'; font-weight: bold;
+  font-family: 'Flow';
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+  font-weight: bold;
   color: #FFFFFF;
   background: transparent;
   border: none;
   font-size: 2em;
-  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
 }
 
 .shout input:focus{
   outline: 0;
+}
+
+.secret {
+  font-size: 1.5em;
+  float: left;
+  opacity: 0.5;
+}
+
+.secret ul {
+  margin: 0;
+  padding: 0;
+}
+
+.secret ul li {
+  list-style: none;
 }
