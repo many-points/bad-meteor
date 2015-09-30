@@ -25,5 +25,10 @@
 </template>
 
 <template name="say">
-  <li>{{text}}</li>
+  {{#if feels createdAt}}
+  <li>
+      <button class="delete" tabindex="-1">&times;</button>
+      {{text}}
+  </li>
+  {{/if}}
 </template>

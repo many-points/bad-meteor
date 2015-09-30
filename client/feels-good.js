@@ -3,7 +3,7 @@ Meteor.subscribe("says");
 Template.body.helpers({
   last: function () {
     if( Session.get("secret") ) {
-      return Says.find({}, {fields: {text: 1}, sort: {created_at: -1}, limit: 10})
+      return Says.find({}, {fields: {text: 1, createdAt: 1}, sort: {createdAt: -1}})
              .fetch()
              .reverse();
     } else {
@@ -30,9 +30,21 @@ Template.body.events({
   }
 });
 
+Template.say.helpers({
+  feels: function (createdAt) {
+    return createdAt < Date.parse("1 Jan 9999");
+  }
+});
+
+Template.say.events({
+  "click .delete": function () {
+    Meteor.call("deleteSay", this._id);
+  }
+});
+
 getSay = function () {
   result = Says.findOne( { random_point : { $near : [Math.random(), Math.random()] } } );
-  if ( result == null ) return "I AM ERROR";
+  if ( result == null ) return "Looking for my database...";
   return result.text;
 };
 

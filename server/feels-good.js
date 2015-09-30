@@ -7,14 +7,17 @@ Meteor.methods({
     Says.insert({
       text: text,
       random_point: [Math.random(), Math.random()],
-      created_at: new Date()
+      createdAt: Date.parse(new Date())
     });
+  },
+  deleteSay: function (id) {
+    Says.remove(id);
   }
 });
 
 Meteor.startup(function () {
-  if (Says.find().count() === 0) {
-    Says._ensureIndex( { random_point: '2d' } );
-    Meteor.call("addSay", "It feels good");
-  }
+  Says._ensureIndex( { random_point: '2d' } );
+  Says._ensureIndex( { createdAt: 1} , {expireAfterSeconds: 60*60*24} );
+  if( Says.findOne({ createdAt: Date.parse("1 Jan 9999") }) == null)
+    Says.insert({ text: "It feels good", random_point: [0.5, 0.5], createdAt: Date.parse("1 Jan 9999")});
 });

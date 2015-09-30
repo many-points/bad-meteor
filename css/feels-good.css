@@ -12,11 +12,12 @@ body {
   position: fixed; 
   top: 0;
   left: 0;
+  margin: 0;
   vertical-align: middle;
 }
 
 p {
-  font-size: 5em;
+  font-size: 5.9vw;
   width: 100%;
   text-align: center;
   position: relative;
@@ -46,6 +47,10 @@ p {
   font-size: 1.5em;
   float: left;
   opacity: 0.5;
+  position: absolute;
+  z-index: 1;
+  overflow: auto;
+  max-height: 100vh;
 }
 
 .secret ul {
@@ -55,4 +60,25 @@ p {
 
 .secret ul li {
   list-style: none;
+}
+
+.delete {
+  text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
+  font-weight: bold;
+  color: #FFFFFF;
+  float: left;
+  font-weight: bold;
+  background: none;
+  font-size: 1em;
+  border: none;
+  position: relative;
+  cursor: pointer;
+}
+
+.delete:focus{
+  outline: 0;
+}
+
+.secret::-webkit-scrollbar { 
+  display: none; 
 }
