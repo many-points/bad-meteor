@@ -1,5 +1,6 @@
 /* CSS declarations go here */
 body {
+  background-color: black;
   min-height: 100%;
   min-width: 100%;
   width: 100%;
@@ -10,8 +11,8 @@ body {
   vertical-align: middle;
 }
 
-h1 {
-  font: 4em 'a_FuturaRound Bold';
+p {
+  font: 5em 'Flow'; font-weight: bold;
   color: #FFFFFF;
   text-shadow: -1px 0 black, 0 2px black, 2px 0 black, 0 -1px black;
   width: 100%;
@@ -26,7 +27,7 @@ h1 {
 }
 
 .shout input {
-  font: 2em 'a_FuturaRound Bold';
+  font: 2em 'Flow'; font-weight: bold;
   color: #FFFFFF;
   background: transparent;
   border: none;

@@ -27,7 +27,11 @@ if (Meteor.isClient) {
       event.preventDefault();
       var text = event.target.text.value;
 
-      Meteor.call("addSay", text);
+      if( validateSay(text) ) {
+        Meteor.call("addSay", text);
+      } else {
+        console.log("did not meet criteria: " + text);
+      }
 
       event.target.text.value = "";
     }
@@ -39,11 +43,16 @@ if (Meteor.isClient) {
     return result.text;
   };
 
+  validateSay = function (say) {
+    re = /^.{3,30}$/;
+    return re.test(say);
+  };
+
   Template.body.onRendered(function () {
     this.find("audio").play();
     window.setInterval( function () {
       $("body").css("background-color", makeColor());
-      $("h1").text( getSay() );
+      $("p").text( getSay() );
     }, 500);
   });
 }
@@ -52,7 +61,7 @@ Meteor.methods({
   addSay: function (text) {
     Says.insert({
       text: text,
-      random_point: [Math.random(), 0],
+      random_point: [Math.random(), Math.random()],
       created_at: new Date()
     });
   }
